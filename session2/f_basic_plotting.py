@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 ##################################################
-# This script shows uses the pandas library to create statistically describe datasets
+# This script shows uses the pandas library to create statistically describe data sets
 # It also shows basic plotting features
 # Find extra documentation about data frame here:
 # https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html
@@ -20,7 +20,7 @@
 
 # We need to import pandas library as well as the plot libraries matplotlib and seaborn
 import pandas as pd
-import matplotlib as plt
+import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 
@@ -38,18 +38,21 @@ pop_country = pop_country.iloc[0, 4:53]
 
 # Histogram and normal distribution
 sns.distplot(pop_2010)
+plt.show()
 
 
 # Kernel density
 sns.distplot(pop_2010, hist=False, rug=True)
+plt.show()
 
 sns.kdeplot(pop_2010, shade=True)
+plt.show()
 
 
 # Scatter plot two years all countries
 pop_comparison.plot.scatter(x='1960', y='1990', c='DarkBlue')
 max_range = range(0, 1000000000, 500000000)     # Sets values for an straight line
-plt.pyplot.plot(max_range, max_range)
+plt.plot(max_range, max_range)
 plt.show()
 
 
