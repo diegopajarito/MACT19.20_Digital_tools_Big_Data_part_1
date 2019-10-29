@@ -60,6 +60,7 @@ for value in countries:
     a_pop = population[population['Country Name'] == value]
     a_pop = a_pop.iloc[0, 4:63]
     plt.plot(a_pop)
+plt.xticks(np.arange(0, 60, 20))
 plt.show()
 
 
@@ -72,15 +73,16 @@ pop_selection = population[['Country Code', '1960', '1980', '2000', '2018']]
 gdp_selection = gdp[['Country Code', '1960', '1980', '2000', '2018']]
 selection = pop_selection.merge(gdp_selection, on='Country Code', how='left').dropna()
 
-fig, axs = plt.subplots(2, 2)
-axs[0, 0].scatter(selection['1960_x'], selection['1960_y'])
-axs[1, 0].hist2d(selection['1980_x'], selection['1980_y'], bins=50)
-axs[0, 1].scatter(selection['2018_x'], selection['2018_y'])
-axs[1, 1].hist2d(selection['2000_x'], selection['2000_y'], bins=50)
+# We can create the arrangement for multiple plots and compare the differences in patterns
+fig, axs = plt.subplots(2, 2, sharex=True, sharey=True)
+axs[0, 0].scatter(selection['1960_x']/1000000, selection['1960_y'])
+axs[1, 0].hist2d(selection['1980_x']/1000000, selection['1980_y'], bins=10)
+axs[0, 1].scatter(selection['2018_x']/1000000, selection['2018_y'])
+axs[1, 1].hist2d(selection['2000_x']/1000000, selection['2000_y'], bins=10)
 plt.show()
 
 
-# Finally, can also serve to visualise multiple elements to identify general trends
+# Finally, can also serve to visualise multiple elements to identify general trends instead of individual features
 for value in gdp['Country Name']:
     a_pop = population[population['Country Name'] == value]
     a_pop = a_pop.iloc[0, 4:63]
