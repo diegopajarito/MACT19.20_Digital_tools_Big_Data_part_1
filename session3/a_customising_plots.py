@@ -43,7 +43,7 @@ plt.show()
 #Change elements
 
 
-# We can also combine data from more than a contry in a scatter plot for population and gdp
+# We can also combine data from more than a country in a scatter plot for population and gdp
 countries = ['Iran, Islamic Rep.', 'Germany', 'Argentina']
 for value in countries:
     a_pop = population[population['Country Name'] == value]
